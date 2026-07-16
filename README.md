@@ -34,3 +34,17 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+## Brevo email setup
+
+The contact form sends transactional email from a server action using Brevo.
+
+Required environment variables:
+
+- `BREVO_API_KEY`
+- `BREVO_FROM_EMAIL` - must be a verified sender in Brevo
+- `BREVO_FROM_NAME`
+- `BREVO_TO_EMAIL` - notification inbox, currently `tayyabkhan0308@gmail.com`
+- `BREVO_TO_NAME`
+
+The form only reports success when Brevo returns a `messageId`.

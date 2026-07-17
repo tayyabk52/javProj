@@ -117,7 +117,8 @@ h1 .under::after { content: ""; position: absolute; left: 0; bottom: 4px; width:
 
 .field { margin-bottom: 12px; }
 .field label { display: block; font-size: 13.5px; font-weight: 600; margin-bottom: 6px; color: var(--ink-2); }
-.field input, .field textarea { width: 100%; padding: 12px 14px; border: 1px solid var(--line); border-radius: 8px; font-size: 14.5px; font-family: inherit; background: var(--bg-soft); transition: var(--transition); color: var(--ink); }
+/* font-size must stay >= 16px so iOS Safari doesn't auto-zoom on focus */
+.field input, .field textarea { width: 100%; padding: 12px 14px; border: 1px solid var(--line); border-radius: 8px; font-size: 16px; font-family: inherit; background: var(--bg-soft); transition: var(--transition); color: var(--ink); }
 .field input:focus, .field textarea:focus { outline: none; border-color: var(--red); background: #fff; box-shadow: 0 0 0 4px rgba(211, 47, 47, 0.12); }
 .field textarea { resize: vertical; min-height: 72px; }
 
@@ -264,7 +265,7 @@ footer a:hover { color: #fff; transform: translateX(4px); }
 .foot-bar { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 24px; text-align: center; font-size: 13px; color: #6B7280; }
 
 /* STICKY MOBILE BAR */
-.sticky-mobile { display: none; position: fixed; bottom: 0; left: 0; right: 0; background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(12px); box-shadow: 0 -10px 25px rgba(0,0,0,0.1); padding: 12px 16px; z-index: 100; gap: 12px; border-top: 1px solid rgba(229,231,235,0.5); }
+.sticky-mobile { display: none; position: fixed; bottom: 0; left: 0; right: 0; background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); box-shadow: 0 -10px 25px rgba(0,0,0,0.1); padding: 12px 16px; padding-bottom: calc(12px + env(safe-area-inset-bottom)); z-index: 100; gap: 12px; border-top: 1px solid rgba(229,231,235,0.5); }
 .sticky-mobile a { flex: 1; padding: 16px; text-align: center; font-weight: 700; border-radius: 10px; font-size: 15px; transition: var(--transition); }
 .sticky-mobile .sm-call { background: var(--bg-soft); color: var(--ink); border: 1px solid var(--line); }
 .sticky-mobile .sm-form { background: linear-gradient(135deg, var(--red) 0%, var(--red-dark) 100%); color: #fff; box-shadow: var(--shadow-red); }
@@ -281,12 +282,35 @@ footer a:hover { color: #fff; transform: translateX(4px); }
 }
 
 @media (max-width: 768px) {
-  h1 { font-size: 36px; }
+  h1 { font-size: 34px; }
   h2 { font-size: 32px; }
   .foot-grid { grid-template-columns: 1fr; gap: 32px; }
-  .nav-cta .btn-ghost { display: none; }
   .sticky-mobile { display: flex; }
-  body { padding-bottom: 84px; }
+  body { padding-bottom: calc(84px + env(safe-area-inset-bottom)); }
   .topbar .hours { display: none; }
   .hero { padding-top: 40px; }
+
+  /* Header: shrink to a compact single-CTA bar so it stays clean */
+  header.nav .wrap { padding: 12px 16px; }
+  .nav-cta { gap: 8px; }
+  .nav-cta .btn-ghost { display: none; }
+  .nav-cta .btn-primary { padding: 9px 16px; font-size: 13.5px; }
+  .logo { gap: 10px; }
+  .logo-mark { width: 34px; height: 34px; font-size: 15px; }
+  .logo-txt { font-size: 18px; }
+
+  /* Let the headline wrap instead of forcing a no-wrap underline */
+  h1 .under { white-space: normal; }
+}
+
+/* Small phones (iPhone SE / older Androids) */
+@media (max-width: 400px) {
+  header.nav .wrap { padding: 10px 14px; }
+  .logo-sub { display: none; }
+  .logo-txt { font-size: 17px; }
+  .nav-cta .btn-primary { padding: 9px 14px; font-size: 13px; }
+  h1 { font-size: 29px; letter-spacing: -0.8px; }
+  .hero-form { padding: 24px 20px; }
+  .wrap { padding: 0 16px; }
+  .sticky-mobile a { padding: 14px 8px; font-size: 14px; }
 }

@@ -35,24 +35,27 @@ export default function ContactForm() {
 
       <div className="field">
         <label htmlFor="name">Navn *</label>
-        <input 
-          type="text" 
-          id="name" 
-          name="name" 
-          placeholder="Dit fulde navn" 
-          required 
-          disabled={status === 'loading'} 
+        <input
+          type="text"
+          id="name"
+          name="name"
+          placeholder="Dit fulde navn"
+          autoComplete="name"
+          required
+          disabled={status === 'loading'}
         />
       </div>
       <div className="field">
         <label htmlFor="phone">Telefon *</label>
-        <input 
-          type="tel" 
-          id="phone" 
-          name="phone" 
-          placeholder="F.eks. 60 20 18 18" 
-          required 
-          disabled={status === 'loading'} 
+        <input
+          type="tel"
+          id="phone"
+          name="phone"
+          placeholder="F.eks. 60 20 18 18"
+          autoComplete="tel"
+          inputMode="tel"
+          required
+          disabled={status === 'loading'}
         />
       </div>
       <div className="field">

@@ -283,7 +283,7 @@ footer a:hover { color: #fff; transform: translateX(4px); }
 
 @media (max-width: 768px) {
   h1 { font-size: 34px; }
-  h2 { font-size: 32px; }
+  h2 { font-size: 30px; }
   .foot-grid { grid-template-columns: 1fr; gap: 32px; }
   .sticky-mobile { display: flex; }
   body { padding-bottom: calc(84px + env(safe-area-inset-bottom)); }
@@ -301,9 +301,61 @@ footer a:hover { color: #fff; transform: translateX(4px); }
 
   /* Let the headline wrap instead of forcing a no-wrap underline */
   h1 .under { white-space: normal; }
+
+  /* Tighten section rhythm — desktop 90-100px is too airy on phones */
+  .offer, .process, .testimonials, .conquest, .final-cta { padding: 64px 0; }
+  .beforeafter, .faq { padding: 56px 0; }
+  .insurance { padding: 40px 0 28px; }
+  .guarantee { padding: 48px 0 56px; }
+  .section-head { margin-bottom: 36px; }
+  .section-sub { font-size: 16px; }
+
+  /* Cards: trim the heavy desktop padding so copy isn't squeezed */
+  .offer-card, .process-step, .tst-card { padding: 28px 22px; }
+  .offer-grid { gap: 20px; }
+  .process-grid { gap: 16px; margin-top: 24px; }
+  .offer-icon { margin-bottom: 18px; }
+  .step-icon { margin-bottom: 18px; }
+  .step-bg-num { font-size: 100px; }
+
+  /* Conquest */
+  .conquest h2 { font-size: 30px; }
+  .conquest p.lead { font-size: 16px; margin-bottom: 24px; }
+  .conquest-list li { font-size: 15px; }
+  .conquest-box { padding: 28px 22px; }
+  .conquest-box .price-new { font-size: 36px; }
+  .conquest-box .btn-primary { padding: 16px; font-size: 16px; }
+
+  /* Testimonials */
+  .tst-body { margin-bottom: 24px; }
+  .tst-author { padding-top: 20px; }
+
+  /* Before / After */
+  .ba-pair img { height: 170px; }
+  .ba-caption { padding: 18px 20px; }
+
+  /* Guarantee */
+  .guarantee-text h3 { font-size: 24px; }
+  .guarantee-text p { font-size: 16px; }
+  .guarantee-seal { width: 100px; height: 100px; font-size: 13px; }
+  .guarantee-seal b { font-size: 28px; }
+
+  /* FAQ */
+  .faq-q { padding: 18px 20px; font-size: 16px; }
+  .faq-a { padding: 0 20px 20px; font-size: 15px; }
+
+  /* Final CTA */
+  .final-cta h2 { font-size: 30px; }
+  .final-cta p { font-size: 16px; margin-bottom: 32px; }
+  .final-badges { gap: 16px 20px; margin-top: 32px; }
 }
 
 /* Small phones (iPhone SE / older Androids) */
+@media (max-width: 560px) {
+  /* Stack the 2-up card grids so padded cards get full width */
+  .offer-grid, .process-grid { grid-template-columns: 1fr; }
+}
+
 @media (max-width: 400px) {
   header.nav .wrap { padding: 10px 14px; }
   .logo-sub { display: none; }
@@ -313,4 +365,8 @@ footer a:hover { color: #fff; transform: translateX(4px); }
   .hero-form { padding: 24px 20px; }
   .wrap { padding: 0 16px; }
   .sticky-mobile a { padding: 14px 8px; font-size: 14px; }
+  .ba-pair img { height: 140px; }
+  .ba-label { font-size: 10px; padding: 4px 8px; }
+  .conquest-box .price-new { font-size: 32px; }
+  .conquest-box .price-new b { display: inline-block; margin-left: 0; margin-top: 8px; }
 }

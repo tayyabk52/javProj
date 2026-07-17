@@ -48,6 +48,20 @@ export async function submitContactForm(formData: FormData) {
     };
   }
 
+  // Support multiple recipients: BREVO_TO_EMAIL may be a comma-separated list.
+  const recipients = toEmail
+    .split(',')
+    .map((email) => email.trim())
+    .filter(Boolean)
+    .map((email) => ({ email, name: toName }));
+
+  if (recipients.length === 0) {
+    return {
+      success: false,
+      error: 'Serverkonfigurationsfejl (ingen gyldig modtager-e-mail).',
+    };
+  }
+
   try {
     const brevo = new BrevoClient({ apiKey });
     const subjectName = name.replace(/\r?\n/g, ' ').trim();
@@ -59,19 +73,25 @@ export async function submitContactForm(formData: FormData) {
 
     const response = await brevo.transactionalEmails.sendTransacEmail({
       sender: { name: fromName, email: fromEmail },
-      to: [{ email: toEmail, name: toName }],
-      subject: `Ny kundehenvendelse fra ${subjectName}`,
+      to: recipients,
+      subject: `Ny tilbudsanmodning - ${subjectName}`,
       htmlContent: `
-        <h2>Ny henvendelse fra Vercel websitet</h2>
-        <p>Du har modtaget en ny tilbudsanmodning fra landingssiden.</p>
+        <h2>Ny tilbudsanmodning</h2>
+        <p>Du har modtaget en ny henvendelse via <strong>DinBilPartner Ejbys hjemmeside.</strong></p>
         <hr />
         <p><strong>Navn:</strong> ${safeName}</p>
         <p><strong>Telefon:</strong> ${safePhone}</p>
-        <p><strong>Skadebeskrivelse:</strong><br /> ${safeDetails}</p>
-        <hr />
-        <p><small>Husk at ringe kunden op hurtigst muligt (inden for 60 minutter i åbningstiden).</small></p>
+        <p><strong>Skade:</strong> ${safeDetails}</p>
       `,
-      textContent: `Navn: ${name} | Telefon: ${phone} | Beskrivelse: ${details || 'Ingen'}`,
+      textContent: `
+Ny tilbudsanmodning
+
+Du har modtaget en ny henvendelse via DinBilPartner Ejbys hjemmeside.
+
+Navn: ${name}
+Telefon: ${phone}
+Skade: ${details || 'Ingen beskrivelse angivet.'}
+`,
       tags: ['contact-form'],
     });
 

@@ -3,6 +3,8 @@
 import { useState } from 'react';
 import { submitContactForm } from '@/actions/submitForm';
 
+const SUCCESS_REDIRECT_URL = 'https://dinbilpartnerejby.dk/tak/';
+
 export default function ContactForm() {
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
   const [message, setMessage] = useState('');
@@ -19,7 +21,8 @@ export default function ContactForm() {
       setMessage('Tak for din henvendelse! Vi vender tilbage hurtigst muligt.');
       // Auto-reset message state after 5 seconds but keep the form locked or cleared
       (e.target as HTMLFormElement).reset();
-      setTimeout(() => setStatus('idle'), 5000);
+      window.location.assign(SUCCESS_REDIRECT_URL);
+      return;
     } else {
       setStatus('error');
       setMessage(result.error || 'Noget gik galt.');

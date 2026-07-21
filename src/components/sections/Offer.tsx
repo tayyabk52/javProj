@@ -6,7 +6,7 @@ export default function Offer() {
       <div className="wrap">
         <div className="section-head">
           <span className="section-eyebrow">Hvorfor 4 ud af 5 vælger os</span>
-          <h2>Det, andre skadecentre kalder "ekstra" – det kalder vi standard.</h2>
+          <h2>Det, andre skadecentre kalder &quot;ekstra&quot; – det kalder vi standard.</h2>
           <p className="section-sub">Du får hele pakken, når du får din bil repareret hos Din Bilpartner Ejby. Ingen tilkøb. Ingen småt-med-småt.</p>
         </div>
 

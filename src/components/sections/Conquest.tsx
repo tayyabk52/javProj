@@ -15,10 +15,10 @@ export default function Conquest() {
             </ul>
           </div>
           <div className="conquest-box">
-            <h3>🎯 Skift-bonus juli 2026</h3>
+            <h3>🎯 Skift-bonus denne måned</h3>
             <div className="price-strike">Normal pris: fra 4.995 kr.</div>
             <div className="price-new">3.995 kr. <b>–1.000 kr.</b></div>
-            <div className="price-sub">Ved fremvisning af skriftligt tilbud fra anden aktør. Gældende t.o.m. 31. juli.</div>
+            <div className="price-sub">Ved fremvisning af skriftligt tilbud fra anden aktør. Gældende resten af måneden.</div>
             <a href="#form" className="btn btn-primary">Send dit tilbud – få vores modbud →</a>
           </div>
         </div>

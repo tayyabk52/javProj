@@ -81,10 +81,14 @@ header.nav .wrap { display: flex; align-items: center; justify-content: space-be
 .btn-lg { padding: 16px 32px; font-size: 16px; border-radius: 10px; }
 
 /* HERO */
-.hero { background: linear-gradient(180deg, #111827 0%, #1F2937 100%); color: #fff; padding: 24px 0 0; position: relative; overflow: hidden; }
+.hero { background: linear-gradient(180deg, #111827 0%, #1F2937 100%); color: #fff; padding: 24px 0 0; position: relative; overflow: hidden; overflow: clip; }
 .hero::before { content: ""; position: absolute; inset: 0; background: radial-gradient(circle at 80% 20%, rgba(211, 47, 47, 0.15), transparent 50%); pointer-events: none; }
 .hero-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 40px; align-items: start; position: relative; z-index: 2; padding-bottom: 32px; padding-top: 10px; }
 .hero-grid > div:first-child { animation: fadeUp 0.6s ease-out forwards; }
+/* Desktop: keep the hero text in view while the taller video + form column scrolls past */
+@media (min-width: 1025px) {
+  .hero-grid > div:first-child { position: sticky; top: 110px; }
+}
 
 .eyebrow { display: inline-flex; align-items: center; gap: 8px; background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.1); padding: 5px 12px; border-radius: 999px; font-size: 11px; font-weight: 600; letter-spacing: 0.8px; text-transform: uppercase; color: #E5E7EB; margin-bottom: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); backdrop-filter: blur(4px); }
 .eyebrow .dot { width: 8px; height: 8px; background: var(--green); border-radius: 50%; box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.2); animation: pulse 2s infinite; }

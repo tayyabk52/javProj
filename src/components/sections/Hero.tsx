@@ -33,6 +33,15 @@ export default function Hero() {
           </div>
 
           <div id="form">
+            <video
+              className="hero-video"
+              src="/videos/din-bilpartner-ejby.mp4"
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="auto"
+            />
             <ContactForm />
           </div>
         </div>
